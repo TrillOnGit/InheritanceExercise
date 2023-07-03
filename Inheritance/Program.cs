@@ -19,7 +19,7 @@ namespace Inheritance
             // give this class 4 members that are specific to Reptile
             // Set this class to inherit from your Animal Class
             
-            Bird osprey = new Bird
+            var osprey = new Bird
             {
                 Name = "Osprey",
                 SensOrgan = "Eyes",
@@ -38,7 +38,7 @@ namespace Inheritance
              * Creatively display the class member values 
              */
 
-            Reptile monitorLizard = new Reptile
+            var monitorLizard = new Reptile
             {
                 Name = "Monitor Lizard",
                 SensOrgan = "Eyes",
@@ -50,8 +50,30 @@ namespace Inheritance
                 Diet = "Omnivore",
                 SkinSituation = "Smooth Scales"
             };
+            
+            //This is technically cleaner due to class organization
+            
+            var repStart = monitorLizard.Name[..1];
+            var birdStart = osprey.Name[..1];
+        
+            Console.WriteLine(
+                $"Type {repStart} if you would like reptile information or {birdStart} for bird information.");
+            var userWant = Console.ReadLine();
 
-            Animal.DisplayValues(monitorLizard, osprey);
+            if (userWant == null) return;
+            if (userWant.ToUpper() == repStart)
+            {
+                monitorLizard.AnimalTraits();
+            }
+            else if (userWant.ToUpper() == birdStart)
+            {
+                osprey.AnimalTraits();
+            }
+            else
+            {
+                Console.WriteLine("Neither of our birds or reptiles start with that input!");
+            }
+
             /*Create an object of your Reptile class
              *  give values to your members using the object of your Reptile class
              *  
